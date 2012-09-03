@@ -1,10 +1,10 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Controllers;
 using Ninject;
 using RestBugs.Services.Formatters;
 using RestBugs.Services.Model;
-using RestBugs.Services.Infrastructure;
-using System.Web.Http.Controllers;
 using WebApiContrib.IoC.Ninject;
+using WebApiContrib.ModelBinders;
 
 namespace RestBugs.Services
 {
