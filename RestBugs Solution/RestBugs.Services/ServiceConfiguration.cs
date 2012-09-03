@@ -4,6 +4,7 @@ using RestBugs.Services.Formatters;
 using RestBugs.Services.Model;
 using RestBugs.Services.Infrastructure;
 using System.Web.Http.Controllers;
+using WebApiContrib.IoC.Ninject;
 
 namespace RestBugs.Services
 {
@@ -20,7 +21,7 @@ namespace RestBugs.Services
             kernel.Bind<IBugRepository>().To<StaticBugRepository>();
             kernel.Bind<IActionValueBinder>().To<MvcActionValueBinder>();
 
-            config.DependencyResolver = new NinjectDependencyResolver(kernel);
+            config.DependencyResolver = new NinjectResolver(kernel);
 
             AutoMapperConfig.Configure();
         }    
