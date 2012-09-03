@@ -1,8 +1,9 @@
 ﻿using System.Web.Http;
 using System.Web.Http.Controllers;
 using Ninject;
-using RestBugs.Services.Formatters;
 using RestBugs.Services.Model;
+using WebApiContrib.Formatting.Html.Formatters;
+using WebApiContrib.Formatting.Razor;
 using WebApiContrib.IoC.Ninject;
 using WebApiContrib.ModelBinders;
 
@@ -13,8 +14,12 @@ namespace RestBugs.Services
         public static void Configure(HttpConfiguration config) {
 
             config.Routes.MapHttpRoute("def", "bugs/{controller}", new {controller = "Index"});
-          
-            config.Formatters.Add(new RazorHtmlMediaTypeFormatter());
+
+            config.Formatters.Add(new HtmlMediaTypeViewFormatter(
+                siteRootPath: "~/Templates",
+                viewLocator: new RazorViewLocator(),
+                viewParser: new RazorViewParser()
+            ));
             //config.MessageHandlers.Add(new EtagMessageHandler());
 
             var kernel = new StandardKernel();

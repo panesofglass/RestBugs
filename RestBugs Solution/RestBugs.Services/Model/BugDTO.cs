@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using WebApiContrib.Formatting.Html;
 
 namespace RestBugs.Services.Model
 {
+    [View("bugs-all")]
     public class BugDTO
     {
         public string Status { get; set; }
